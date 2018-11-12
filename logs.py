@@ -1,3 +1,4 @@
+#!/usr/bin/env python
 import psycopg2
 
 # Functions that run queries on the SQL DB to answer specific questions
@@ -42,18 +43,23 @@ def problematicDays(p=1):
 
 
 def print_query_r(query_result, headers, metric):
-    for result in query_result:
-        print ('\t' + str(result[0]) + ' ---> ' + str(result[1]) + " " + metric)
+    for res in query_result:
+        print ('\t' + str(res[0]) + ' ---> ' + str(res[1]) + " " + metric)
     print("")
 
 # Print results
 
 
 print("1. What are the most popular three articles of all time?")
-print_query_r(topNarticle(), headers=["Title", "Count of Views"], metric="views")
+print_query_r(
+    topNarticle(), headers=["Title", "Count of Views"],
+    metric="views")
 
 print("Who are the most popular article authors of all time?")
-print_query_r(topNAuthor(), headers=["Author", "Count of Views"], metric="views")
+print_query_r(
+    topNAuthor(), headers=["Author", "Count of Views"],
+    metric="views")
 
 print("On which days did more than 1% of requests lead to errors?")
-print_query_r(problematicDays(), headers=["Date", "Error"], metric="percent")
+print_query_r(
+    problematicDays(), headers=["Date", "Error"], metric="percent")
