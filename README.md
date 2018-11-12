@@ -48,4 +48,4 @@ This project makes use of Udacity's Linux-based virtual machine (VM) configurati
   SELECT date(time),round(100.0 * sum(case log.status when '200 OK'
   then 0 else 1 end)/count(log.status),2) AS "percenterror"
   FROM log GROUP BY date(time);
-````# udacity-logs-analysis-project
+````
